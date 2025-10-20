@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Polygones de départements - Leaflet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS de Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <!-- JS de Leaflet -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <style>
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script>
+    // Initialisation de la carte centrée sur le maroc
+    var map = L.map('map').setView([33.97676622832684, -6.866187441620882], 6);
+
+    // Ajout du fond de carte OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    // Polygone 1 : Polygone pour le département topo 
+    var finistere = L.polygon([
+      [33.97679485268907, -6.866823700124154],
+      [33.97667844491921, -6.866645041415976],
+      [33.97615637174869, -6.867112957080256],
+      [33.97630452797423, -6.867325646018564],
+      [33.97677368765186, -6.866976836159738]
+    ], {
+      color: 'blue',
+      fillColor: '#3388ff',
+      fillOpacity: 0.4
+    }).addTo(map);
+    finistere.bindPopup("<b>Topo</b>");
+
+    // Polygone 2 : Polygone pour le pole digital 
+    var morbihan = L.polygon([
+      [33.97728721891046, -6.8664421768724875],
+      [33.97712702290306, -6.866136309384826],
+      [33.977030237669, -6.866377783717191],
+      [33.97722714544305, -6.866530717461021],
+      [33.9772838814967, -6.8664421768724875]
+    ], {
+      color: 'green',
+      fillColor: '#33ff88',
+      fillOpacity: 0.4
+    }).addTo(map);
+    morbihan.bindPopup("<b>pole digital</b>");
+
+    // Polygone 3 : Polygone pour le département de genie rurale 
+    var cotesArmor = L.polygon([
+      [33.97739452656014, -6.865828315872284],
+      [33.977285174582505, -6.865726225181897],
+      [33.97718993242289, -6.865870853659946],
+      [33.97729575703811, -6.866049512368126],
+      [33.97738747159809, -6.865887868775011]
+    ], {
+      color: 'red',
+      fillColor: '#ff6666',
+      fillOpacity: 0.4
+    }).addTo(map);
+    cotesArmor.bindPopup("<b>genie rural</b>");
+
+ // Polygone 4 : Polygone pour building center 
+    var morbihan = L.polygon([
+      [33.977014306176855, -6.86588461466955],
+      [33.97679039889138, -6.865767374540247],
+      [33.97672705659179, -6.866035605745167],
+      [33.97694359867672, -6.8661226476593455],
+          ], {
+      color: 'yellow',
+      fillColor: '#ffff00',
+      fillOpacity: 0.4
+    }).addTo(map);
+    morbihan.bindPopup("<b>building center</b>");
+
+// Route 1
+var ligne = L.polyline([
+  [33.977670122670325, -6.867118867987604],
+  [33.976364602724324, -6.866152699187325]
+], {
+  color: 'purple',    // couleur de la ligne
+  weight: 4,          // épaisseur
+  opacity: 0.8        // transparence
+}).addTo(map);
+
+// Optionnel : popup pour la ligne
+ligne.bindPopup("<b>Route 1</b>");
+
+// Route 2
+var ligne = L.polyline([
+  [33.97708073276141, -6.8661062249496325],
+  [33.97690581731223, -6.8665325708564575]
+], {
+  color: 'orange',    // couleur de la ligne
+  weight: 4,          // épaisseur
+  opacity: 0.8        // transparence
+}).addTo(map);
+
+// Optionnel : popup pour la ligne
+ligne.bindPopup("<b>Route 2</b>");
+
+
+// Route 3
+var ligne = L.polyline([
+  [33.97656715020682, -6.866308178273918],
+  [33.975566027468695, -6.867237163565633]
+], {
+  color: 'red',    // couleur de la ligne
+  weight: 4,          // épaisseur
+  opacity: 0.8        // transparence
+}).addTo(map);
+
+// Optionnel : popup pour la ligne
+ligne.bindPopup("<b>Route 3</b>");
+
+  </script>
+</body>
+</html>
